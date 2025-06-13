@@ -5,7 +5,7 @@ import { ProductComponet } from './products/components/product';
 
 @Component({
   selector: 'app-root', //Etiqueta personalizada
-  imports: [CommonModule, RouterOutlet, ProductComponet], //Importaciones (dependencias, módulos, componentes)
+  imports: [CommonModule, ProductComponet], //Importaciones (dependencias, módulos, componentes)
   templateUrl: './app.html', //Vista
   styleUrl: './app.scss' //Hoja de Estilos
 })
