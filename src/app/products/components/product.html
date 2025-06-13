@@ -1,0 +1,50 @@
+<!--COMPONENT PRODUCT-->
+<div class="mb-4">
+  <h2 class="text-primary">Listado de Productos</h2>
+</div>
+
+<product-form (productEvent)="addProduct($event)" [product] = "productSelected"></product-form>
+
+@if (products.length > 0 ) {
+    <table class="table table-striped table-hover mt-4">
+        <thead class="table-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @for (product of products; track $index) {
+                <tr>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.description }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>
+                        <div class="btn-group">
+                            <button 
+                            type="button"
+                            class="btn btn-sm btn-warning"
+                            (click)="onUpdateProduct(product)">
+                                Editar
+                            </button>
+
+                            <button 
+                            type="button"
+                            class="btn btn-sm btn-danger"
+                            (click)="onDeleteProduct(product.id)">
+                                Eliminar
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+} @else {
+    <div>
+        <p class="alert alert-info mt-4">No hay productos disponibles...</p>
+    </div>
+}

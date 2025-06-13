@@ -1,0 +1,67 @@
+<!--COMPONENT FORM-->
+<form class="border rounded p-4 bg-light mt-4"
+(ngSubmit)="onSubmit(productForm)" #productForm="ngForm">
+    <div class="mb-3">
+        <label class="form-label">Nombre:</label>
+
+        <input 
+        type="text" 
+        name="name"
+        class="form-control"
+        placeholder="Nombre producto"
+        [(ngModel)]="product.name"
+        #name="ngModel"
+        required
+        />
+
+        <div *ngIf="name.invalid && name.touched" class="text-danger">
+            El nombre es obligatorio.
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Descripción:</label>
+
+        <input 
+        type="text" 
+        name="description"
+        class="form-control"
+        placeholder="Descripción"
+        [(ngModel)]="product.description"
+        #description="ngModel"
+        required
+        />
+
+        <div *ngIf="description.invalid && description.touched" class="text-danger">
+            La descripción es obligatoria.
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Precio:</label>
+
+        <input 
+        type="number" 
+        name="price"
+        class="form-control"
+        placeholder="Precio"
+        [(ngModel)]="product.price"
+        #price="ngModel"
+        min="1"
+        required
+        />
+
+        <div *ngIf="price.invalid && price.touched" class="text-danger">
+            El precio es obligatorio y debe ser mayor a 0.
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center">
+        <button 
+        type="submit" 
+        [disabled]="productForm.invalid"
+        class="btn btn-primary w-25">
+            {{ product.id > 0 ? 'Actualizar' : 'Agregar' }}
+        </button>
+    </div>
+</form>
